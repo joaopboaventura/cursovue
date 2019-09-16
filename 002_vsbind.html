@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Hello World</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+</head>
+<body>
+    <div id="app">
+        <div :title="titulo">
+            <h1>{{msg[1]}}<h1>    
+        </div>
+        <div>
+            <h3>
+                {{msg[2]}}                    
+            </h3>
+        </div>
+    </div>
+    <script type="text/javascript">
+        var app = new Vue({
+            el: '#app',
+            data: {
+                msg: ['Titulo da DIV','Corpo','Mensagem2'],
+                titulo: new Date().toLocaleDateString('pt-BR'),
+            }
+        })
+    </script>
+</body>
+</html>
