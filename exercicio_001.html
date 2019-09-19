@@ -1,37 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Exercício 1 - João Paulo</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+    <script src="vue.js"></script>
 </head>
+
 <body>
     <div id="app">
         <h1 style="color: darkgreen" v-text='titulo_exercicio'></h1>
-        <div>
-            <label for="nome">Nome:</label>
-            <input @keydown="dados_informados=false" v-model="nome" type="text" name="nome" id="nome" placeholder="Digite seu nome"><BR>
-        </div><BR>
-        <div>
-            <label for="unidade">Em qual unidade você está alocado?</label><BR><BR>
-            <select @change="dados_informados=false" v-model="unidadeselecionada" name="unidade" id="unidade">
-                <option></option>
-                <option v-for='unidade in unidades' v-text='unidade.unidade' :value='unidade.codigo' ></option>
-            </select>
-        </div><BR>
-
-        <div>
-            <label for="atividades">Atividades da empresa:</label><BR><BR>
-            <textarea @keydown="dados_informados=false" v-model="atividades" name="atividades" id="atividades" cols="30" rows="10" placeholder="Digite suas atividades"></textarea>
-        </div>
-        <div>
-            <input type="button" @click='mostraDados' value="Mostrar Dados">
-        </div>
-
-
-        <div v-if="dados_informados">
+        <form action="#" method="POST">
+            <div>
+                <label for="nome">Nome:</label>
+                <input @keydown="dadosInformados=false" v-model="nome" type="text" name="nome" id="nome"
+                    placeholder="Digite seu nome"><BR>
+            </div><BR>
+            <div>
+                <label for="unidade">Em qual unidade você está alocado?</label><BR><BR>
+                <select @change="dadosInformados=false" v-model="unidadeselecionada" name="unidade" id="unidade">
+                    <option value="">Selecione uma Unidade</option>
+                    <option v-for='unidade in unidades' v-text='unidade.unidade' :value='unidade.codigo'></option>
+                </select>
+            </div><BR>
+            <div>
+                <label for="atividades">Atividades da empresa:</label><BR><BR>
+                <textarea @keydown="dadosInformados=false" v-model="atividades" name="atividades" id="atividades"
+                    cols="30" rows="10" placeholder="Digite suas atividades"></textarea>
+            </div>
+            <div>
+                <input type="button" @click='mostraDados' value="Mostrar Dados">
+            </div>
+        </form>
+        <div v-if="dadosInformados">
             <h1 style="color: darkorange">Resultado</h1>
             <div><strong>Nome:</strong><span v-text="nome"></span></div>
             <div><strong>Unidade:</strong><span v-text="unidadeselecionada"></span></div>
@@ -39,26 +42,32 @@
         </div>
     </div>
     <script type="text/javascript">
-        var app = new Vue({
+        var appx = new Vue({
             el: '#app',
             data: {
                 titulo_exercicio: 'Exercício 1 - João Paulo',
-                unidades: [
-                {codigo:1 , unidade:"Sede"},
-                {codigo:2 , unidade:"Tupis"},
+                unidades: [{
+                        codigo: 1,
+                        unidade: "Sede"
+                    },
+                    {
+                        codigo: 2,
+                        unidade: "Tupis"
+                    },
                 ],
                 unidadeselecionada: '',
                 nome: '',
                 atividades: '',
-                dados_informados: false,
+                dadosInformados: false,
             },
-            methods:{
-                verificaDados(){
-                    this.dados_informados = ((this.unidadeselecionada!='') && (this.nome!='') && (this.atividades!=''));
-                    return this.dados_informados;
+            methods: {
+                verificaDados() {
+                    this.dadosInformados = ((this.unidadeselecionada !== '') && (this.nome !== '') && (this
+                        .atividades !== ''));
+                    return this.dadosInformados;
                 },
-                mostraDados(){
-                    if (!this.verificaDados()){
+                mostraDados() {
+                    if (!this.verificaDados()) {
                         alert('Informe tudo!');
                     }
                 }
@@ -66,4 +75,5 @@
         })
     </script>
 </body>
+
 </html>
