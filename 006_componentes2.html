@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Exercício 1 - João Paulo</title>
+    <script src="vue.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+
+<body>
+    <div id="app">
+        <titulo v-text="tituloExericio" cor="green"></titulo>
+        <table class="table" style="width:70%" name="resultados">
+            <thead class="thead-dark">
+                <tr>
+                    <th scope="col">Nome</th>
+                    <th scope="col">Cargo</th>
+                    <th scope="col">Unidade</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr v-for="pessoa in pessoas">
+                    <td v-text="pessoa.nome"></td>
+                    <td v-text="pessoa.cargo"></td>
+                    <td v-text="pessoa.unidade"></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <script type="text/javascript">
+        Vue.component('titulo', {
+            template: '<h1 :style="{color: cor}">{{texto}}</h1>',
+            props: {
+                texto: {
+                    type: String,
+                    default: 'Texto de exemplo',
+                },
+                cor: {
+                    type: String,
+                    default: 'red',
+                }
+            },
+        });
+
+        var app = new Vue({
+            el: '#app',
+            data: {
+                tituloExericio: 'Exercício de Tabelas',
+                pessoas: [{
+                        nome: 'Paulo',
+                        cargo: 'Analista',
+                        unidade: 'Tupis'
+                    },
+                    {
+                        nome: 'Natália',
+                        cargo: 'Redatora',
+                        unidade: 'Fazenda'
+                    }
+                ],
+            },
+        })
+    </script>
+</body>
+
+</html>
